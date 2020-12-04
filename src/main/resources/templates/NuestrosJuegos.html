@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Games - Alten Game Club</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="..\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<div class="container text-center">
+		<h3 class="text-center display-4 my-4" data-th-text="#{public.game.head}"></h3>
+		<div
+			class="container border border-dark border-bottom-0 bg-light mt-4 rounded-top shadow p-3">
+			<p class="text-center" data-th-text="#{public.game.body}"></p>
+		</div>
+
+		<div
+			class="table-responsive justify-content-center rounded-bottom bg-light p-2 mb-4 border border-dark border-top-0 shadow">
+			<h5 data-th-text="#{public.game.tablehead}"></h5>
+
+			<table class="table table-hover container-fluid">
+				<thead class="thead-light">
+				<tr>				
+					<th data-th-text="#{game.name}"></th>
+					<th data-th-text="#{game.des}"></th>
+					<th data-th-text="#{game.players}"></th>
+					<th data-th-text="#{game.center}"></th>
+					<th data-th-text="#{game.leng}"></th>
+				</tr>
+				</thead>
+				<tbody class="bg-light">
+					<tr th:each="juego : ${listaJuegos}">
+						<td th:text="${juego.nombreJuego}"></td>
+						<td th:text="${juego.descripcionJuego}"></td>
+						<td th:text="${juego.minJugadores +'-'+ juego.maxJugadores}"></td>
+						<td th:text="${juego.centroJuego.getCiudad()}"></td>
+						<td th:text="${juego.idiomaJuego.getNombreIdiomas()}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Game Sessions - Alten Game Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<div class="container text-center">
+		<!--Nuestros Juegos-->
+		<h3 class="text-center display-4 my-4">Partidas</h3>
+		<div
+			class="container border border-dark border-bottom-0 bg-light mt-4 rounded-top shadow p-3">
+		</div>
+		<!-- Tabla donde se muestran todos los juegos y sus correspondientes centros -->
+		<div class="">
+			<div th:if="${param.yaValorada}" class="alert alert-info my-3"
+				role="alert">Ya has valorado esa partida.</div>
+			<div th:if="${param.jugadorValorado}" class="alert alert-info my-3"
+				role="alert">Ya has valorado este jugador de la partida.</div>
+			<div th:if="${param.noEmparejado}" class="alert alert-info my-3"
+				role="alert">Todavía no te has apuntado a ninguna partida,
+				aquí puedes ver las proximas partidas que se jugarán.</div>
+			<div th:if="${ #lists.isEmpty(listaPartidas)}"
+				class="text-center rounded-bottom bg-light p-2 mb-4 border border-dark border-top-0 shadow">
+				<p th:if="${param.unirse}">
+					<span>No hay ninguna partida disponible para unirse, <a
+						href="/jugador/solicitudes/new">¡prueba a organizarla tú!</a></span>
+				</p>
+				<p th:if="${param.salir}">
+					<span>Todavía no te has apuntado a ninguna partida, <a
+						href="/jugador/partidas/buscar?unirse">busca una partida</a> u <a
+						href="/jugador/solicitudes/new">organizala tu mismo</a></span>
+				</p>
+				<p th:if="${param.terminar}">
+					<span>Vaya, no tienes ninguna partida como organizador.
+						Organiza una partida <a href="/jugador/solicitudes/new">clickando
+							aquí</a>
+					</span>
+				</p>
+				<p th:if="${param.valorar}">
+					<span>Las partidas que has jugado no han sido marcadas como
+						terminadas aún, habla con el organizador de tu partida</span>
+				</p>
+			</div>
+			<table
+				class="table-responsive justify-content-center rounded-bottom bg-light p-2 mb-4 border border-dark border-top-0 shadow"
+				th:if="${not #lists.isEmpty(listaPartidas)}">
+				<thead class="thead-light">
+					<tr>
+						<th>Codigo Partida</th>
+						<th>Organizador</th>
+						<th>Juego</th>
+						<th>Dia</th>
+						<th>Hora</th>
+						<th th:unless="${param.valorar}">Estado</th>
+						<th th:if="${param.unirse}"><span></span></th>
+						<th th:if="${param.salir}"><span></span></th>
+						<th th:if="${param.terminar}"><span></span></th>
+						<th th:if="${param.valorar}"><span></span></th>
+					</tr>
+				</thead>
+				<tbody class="bg-light">
+					<tr th:each="partida : ${listaPartidas}">
+						<td th:text="${partida.getId()}"></td>
+						<td
+							th:text="${partida.getSolicitudPartida().getUsuarioOrganizador().getEmail()}"></td>
+						<td
+							th:text="${partida.getSolicitudPartida().getJuegoSolicitud().getNombreJuego()}"></td>
+						<td th:text="${partida.getSolicitudPartida().getDiaPartida()}"></td>
+						<td th:text="${partida.getSolicitudPartida().getHoraPartida()}"></td>
+						<td th:unless="${param.valorar}"><span
+							th:text="${partida.getEstadoPartida().getNombreEstadoPartida()}"></span></td>
+						<td th:if="${param.unirse}"><a href="#"
+							th:href="@{/jugador/emparejamiento/unirse/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-primary">
+									Unirse</button>
+						</a></td>
+						<td th:if="${param.salir}"><a href="#"
+							th:href="@{/jugador/emparejamiento/salir/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-danger">
+									Abandonar</button>
+						</a></td>
+						<td th:if="${param.terminar}"><a href="#"
+							th:href="@{/jugador/organizador/terminar/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-warning">
+									Terminada</button>
+						</a></td>
+						<td th:if="${param.valorar}"><a href="#"
+							th:href="@{/jugador/valoracion/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-info">
+									Valorar Actividad</button>
+						</a> <a href="#"
+							th:href="@{/jugador/historial/otrosJugadores/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-info">
+									Valorar Jugadores</button>
+						</a> <a href="#"
+							th:href="@{/jugador/partidas/incidencias/new/{id}(id=${partida.getId()})}">
+								<button type="button" class="btn btn-outline-danger">
+									Incidencia</button>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+</body>
+</html>

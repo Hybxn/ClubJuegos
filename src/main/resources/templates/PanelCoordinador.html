@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coordinator - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="..\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<div class="container">
+		<div class="text-center">
+			<h2 class="my-4 display-4 col-12" data-th-text="#{panel.coordinator.title}"></h2>
+		</div>
+		<div th:if="${param.editado}"
+			class="alert alert-success my-3 alert-dismissible fade show"
+			role="alert">
+			Tu perfil ha sido actualizado con éxito!.
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div th:if="${param.noEditado}"
+			class="alert alert-warning my-3 alert-dismissible fade show"
+			role="alert">
+			Tu perfil no se ha podido modificar :(
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="container mt-4">
+			<div class="card-deck">
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Listas de Solicitudes</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui verás todas las solicitudes de
+							partida realizadas por los usuarios.</p>
+						<a href="/management/solicitudes" class="btn btn-outline-dark">Mostrar
+							Solicitudes</a>
+					</div>
+				</div>
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Lista de juegos</h5>
+					<div class="card-body">
+						<p class="card-text">Aquí verás todas los juegos del centro,
+							editar su información y añadir nuevos.</p>
+						<a href="/management/juegos" class="btn btn-outline-dark">Mostrar
+							juegos</a>
+					</div>
+				</div>
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Lista de usuarios</h5>
+					<div class="card-body">
+						<p class="card-text">Aquí verás todos los usuarios del centro,
+							también podras modificarlos.</p>
+						<a href="/management/usuarios" class="btn btn-outline-dark">Mostrar
+							usuarios</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-4">
+			<div class="card-deck">
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Mejores jugadores</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui podrás ver a los jugadores con
+							mejores puntuaciones.</p>
+						<a href="/management/top/jugadores" class="btn btn-outline-dark">Mostrar mejores
+							jugadores</a>
+					</div>
+				</div>
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Mejores juegos</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui podrás ver los juegos con mejores
+							puntuaciones.</p>
+						<a href="/management/top/juegos" class="btn btn-outline-dark">Mostrar mejores juegos</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+
+	<div th:replace="/Plantilla.html :: footer"></div>
+
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+</body>
+</html>
