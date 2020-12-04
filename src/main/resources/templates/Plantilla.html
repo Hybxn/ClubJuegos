@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body>
+	<!-- Banner de la página web -->
+	<a th:fragment="banner" href="/">
+		<section class="shadow container-fluid bannerClub"></section>
+	</a>
+	<!--  NavBar -->
+	<nav th:fragment="navbar"
+		class="navbar navbar-expand-md sticky-top navbar-dark fondo2 shadow">
+		<a class="navbar-brand" href="/"><img class="logoNav"
+			src="/imgs/mono-package-games-cards.svg" /></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#contenidoNav" aria-controls="contenidoNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse text-right" id="contenidoNav">
+
+			<ul class="navbar-nav mr-auto text-center">
+				<li class="nav-item "><a class="nav-link" href="/"
+					data-th-text="#{nav.home}"></a></li>
+				<li class="nav-item"><a class="nav-link" href="/juegos"
+					data-th-text="#{nav.games}"></a></li>
+				<li class="nav-item"><a class="nav-link" href="/centros"
+					data-th-text="#{nav.centers}"></a></li>
+				<li class="nav-item"><a class="nav-link" href="/panel"
+					data-th-text="#{nav.panel}"></a></li>
+			</ul>
+
+			<div class="btn-group"
+				th:if="${#authentication.name == 'anonymousUser'}">
+				<button type="button" class="btn btn-dark dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+					data-th-text="#{nav.connect}"></button>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="/login" class="dropdown-item" type="button"
+						data-th-text="#{home.box.loginbutton}"></a> <a href="/registro"
+						class="dropdown-item" type="button"
+						data-th-text="#{home.box.regbutton}"></a>
+				</div>
+			</div>
+
+			<div class="btn-group"
+				th:if="${#authentication.name != 'anonymousUser'}">
+				<button type="button" class="btn btn-dark dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+					th:text="${#authentication.name}"></button>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="/panel" class="dropdown-item" type="button"
+						data-th-text="#{nav.panel}"></a> <a href="/miPerfil/edit"
+						class="dropdown-item" type="button" data-th-text="#{nav.info}"></a>
+					<div class="dropdown-divider"></div>
+					<a href="javascript:document.getElementById('logoutForm').submit()"
+						class="dropdown-item" type="button" data-th-text="#{nav.out}"></a>
+				</div>
+			</div>
+		</div>
+		<form th:action="@{/logout}" method="post" id="logoutForm"></form>
+	</nav>
+	<!-- Footer de la pagina -->
+	<div th:fragment="footer"
+		class="jumbotron jumbotron-fluid mt-5 mb-0 fondo1 text-white-50">
+		<div class="container">
+			<div class="row">
+				<p class="col-4 font-weight-bold my-2 mx-1"
+					><span data-th-text="#{foot.info}"></span>
+					<br /> <span class="font font-weight-light"
+						data-th-text="#{foot.adv}"></span>
+				</p>
+				<p class="col-3 font-weight-bold my-2 mx-1">
+					<span data-th-text="#{foot.sm}"></span> <br /> <a
+						href="https://twitter.com/?lang=es"><img class="logoNav"
+						src="/imgs/twitter.svg" alt="" /></a> <a
+						href="https://www.instagram.com/?hl=es"><img class="logoNav"
+						src="/imgs/instagram.svg" alt="" /></a> <a
+						href="https://es-es.facebook.com/"><img class="logoNav"
+						src="/imgs/facebook.svg" alt="" /></a>
+				</p>
+				<p class="col-4 font-weight-bold my-2 mx-1">
+					<span data-th-text="#{foot.leng}"></span> <br /> <span
+						class="font font-weight-light"><a href="?lang=en"
+						type="button" class="btn btn-primary btn-sm logoUK text-dark">
+							English</a> <a type="button" href="?lang=es"
+						class="btn btn-primary btn-sm logoESP text-dark"> Español</a></span>
+				</p>
+				Icons made by <a href="https://www.flaticon.com/authors/freepik"
+					title="Freepik"> Freepik </a> from <a
+					href="https://www.flaticon.com/" title="Flaticon">
+					www.flaticon.com</a>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/pers.js"></script>
+</body>
+</html>

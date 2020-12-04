@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>- Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center">
+		<span
+			th:text="${valoracion.getIdValoracionActividad()} ? 'Editar valoracion' : 'Nueva valoracion'"></span>
+	</h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark">
+		<p class="text-center">Introduce tus valoraciones entre 0 y 10</p>
+		<form method="post" action="#" class="justify-content-center"
+			th:action="@{/jugador/valoracion/submit}" th:object="${valoracion}">
+			<input type="hidden" th:field="*{idValoracionActividad}" id="id" />
+			<input type="hidden" th:field="*{partidaValoracion}" id="partidaValoracion" />
+			<input type="hidden" th:field="*{usuarioValoracion}" id="usuarioValoracion" />
+			<div class="form-group my-3">
+				<label for="nombreJuego"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Valoración Juego: </label> <input class="col-7 form-control d-inline-block"
+					max="10" min="0" type="number" id="valoracionJuego" placeholder=""
+					th:field="*{valoracionJuego}" required />
+			</div>
+			<div class="form-group my-3">
+				<label for="nombreJuego"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Valoración Organizador: </label> <input
+					class="col-7 form-control d-inline-block" max="10" min="0"
+					type="number" id="valoracionOrganizador" placeholder=""
+					th:field="*{valoracionOrganizador}" required />
+			</div>
+			<div class="form-group my-3">
+				<button class="btn btn-outline-success mt-2 mb-5" type="submit">
+					Enviar valoración</button>
+			</div>
+		</form>
+	</div>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="\js\pers.js"></script>
+</body>
+</html>

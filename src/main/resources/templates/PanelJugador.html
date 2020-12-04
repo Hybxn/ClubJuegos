@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jugador Club de Juegos</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="..\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<div class="container mb-5">
+		<div class="text-center">
+			<h2 class="my-4 display-4 col-12"
+				data-th-text="#{panel.player.title}"></h2>
+		</div>
+		<div th:if="${param.editado}" class="alert alert-success my-3"
+			role="alert">Tu perfil ha sido actualizado con éxito!.</div>
+		<div th:if="${param.noEditado}" class="alert alert-warning my-3"
+			role="alert">Tu perfil no se ha podido modificar :(</div>
+		<div th:if="${param.noEmparejado}" class="alert alert-danger my-3"
+			role="alert">Ha ocurrido un error al unirte a la partida.</div>
+		<div th:if="${param.emparejado}" class="alert alert-success my-3"
+			role="alert">Te has unido a la partida correctamente.</div>
+		<div th:if="${param.yaUnido}" class="alert alert-warning my-3"
+			role="alert">Parece que ya estabas unido a esta partida.</div>
+		<div th:if="${param.abandonada}" class="alert alert-success my-3"
+			role="alert">Has abandonado la partida con éxito.</div>
+		<div th:if="${param.noAbandonada}" class="alert alert-warning my-3"
+			role="alert">Error al abandonar una partida.</div>
+		<div th:if="${param.noOrganizada}" class="alert alert-warning my-3"
+			role="alert">No hemos encontrado ninguna partida en la que seas
+			organizador.</div>
+		<div th:if="${param.valorado}" class="alert alert-success my-3"
+			role="alert">Valoración enviada!</div>
+		<div th:if="${param.termianda}" class="alert alert-warning my-3"
+			role="alert">Se ha marcado la partida como terminada.</div>
+		<div th:if="${param.noJugado}" class="alert alert-warning my-3"
+			role="alert">Aún no has jugado ninguna partida.</div>
+		<div th:if="${param.IncidenciaEnviada}" class="alert alert-warning my-3"
+			role="alert">Se ha enviado la incidencia correctamente, gracias por avisar.</div>
+		<div class="container mt-4">
+			<div class="card-deck">
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Tus solicitudes</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui verás el estado de tus ultimas
+							solicitudes.</p>
+						<a href="/jugador/solicitudes" class="btn btn-outline-dark">Mostrar
+							Solicitudes</a>
+					</div>
+				</div>
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Tus actividades recientes</h5>
+					<div class="card-body">
+						<p class="card-text">Aquí verás tus partidas ya terminadas y
+							podrás valorarlas o reportar alguna incidencia.</p>
+						<a href="/jugador/historial?valorar" class="btn btn-outline-dark">Mostrar
+							historial de partidas</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-4">
+			<div class="card-deck">
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Tus proximas partidas</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui podrás ver toda la información de
+							tus futuras actividades, también puedes abandonarlas.</p>
+						<p class="card-text">Mostrar partidas como:</p>
+						<a href="/jugador/emparejamiento?salir"
+							class="btn btn-outline-dark">Jugador</a> <a
+							href="/jugador/organizador?terminar" class="btn btn-outline-dark">Organizador</a>
+					</div>
+				</div>
+				<div class="card border-dark bg-light shadow">
+					<h5 class="card-title card-header">Nueva partida</h5>
+					<div class="card-body">
+						<p class="card-text">Aqui podrás crear o unirte a una nueva
+							partida.</p>
+						<a href="/jugador/partidas/buscar?unirse"
+							class="btn btn-outline-dark">Buscar partidas</a> <a
+							href="/jugador/solicitudes/new" class="btn btn-outline-dark">Crear
+							partida</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+</body>
+</html>

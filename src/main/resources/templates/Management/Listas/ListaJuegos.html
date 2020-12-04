@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Games List - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center" data-th-text="#{manag.games}"></h3>
+	<div th:if="${#lists.isEmpty(listaJuegos)}">
+		<span class="alert alert-danger" role="alert">Parece que ha
+			ocurrido un error y no se pueden visualizar los juegos o no hay
+			ningun juego en tu centro<br> Por favor contacta con
+			ivan.maciag@alten.es para informar del problema.<br> Disculpa
+			las molestias
+		</span>
+	</div>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark p-3 table-responsive">
+
+		<table class="table table-hover container-fluid" th:if="${not #lists.isEmpty(listaJuegos)}">
+			<thead class="thead-light">
+				<tr>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Jugadores</th>
+					<th>Centro</th>
+					<th>Idioma</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody class="bg-light">
+				<tr th:each="juego : ${listaJuegos}">
+					<td th:text="${juego.nombreJuego}"></td>
+					<td th:text="${juego.descripcionJuego}"></td>
+					<td th:text="${juego.minJugadores +'-'+ juego.maxJugadores}">
+					</td>
+					<td th:text="${juego.centroJuego.getCiudad()}"></td>
+					<td th:text="${juego.idiomaJuego.getNombreIdiomas()}"></td>
+					<td>
+						<div class="btn-group">
+							<a href="#"
+								th:href="@{/management/juegos/edit/{id}(id=${juego.getIdJuegos()})}">
+								<button type="button" class="btn btn-outline-info">
+									Editar</button>
+							</a> <a href="#"
+								th:href="@{/management/juegos/delete/{id}(id=${juego.getIdJuegos()})}">
+								<button type="button" class="btn btn-outline-danger"
+									data-toggle="modal" data-taget="#delete-modal"
+									th:data-id="${juego.getIdJuegos()}">Eliminar</button>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-group text-center my-3">
+		<a href="/management/juegos/new">
+			<button type="button" class="btn btn-outline-success">Añadir
+				juego</button>
+		</a>
+	</div>
+	<!-- Modal no funciona -->
+<!-- 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"> -->
+<!-- 		<div class="modal-dialog" role="document"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
+<!-- 					<h4 class="modal-title">Borrar juego</h4> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<p>¿Está usted seguro de borrar este juego?</p> -->
+<!-- 					<button type="button" class="btn btn-outline-default" -->
+<!-- 						data-dismiss="modal">No</button> -->
+<!-- 					<a href="/management/juegos/delete/" class="btn btn-outline-danger">Sí</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+
+<!-- 		</div> -->
+<!-- 	</div> -->
+
+	<!-- Footer -->
+
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="\js\pers.js"></script>
+</body>
+</html>

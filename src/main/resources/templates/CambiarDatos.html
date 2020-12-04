@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My profile - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href=""></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center">
+		<span>Editar perfil</span>
+	</h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark">
+		<div th:if="${param.noEditado}" class="alert alert-danger my-3"
+			role="alert">Las contraseñas no coinciden o ha introducido mal su contraseña y no se ha podido
+			editar su perfil.</div>
+		<form method="post" action="#" class="justify-content-center"
+			th:action="@{/miPerfil/edit/submit}" th:object="${usuario}">
+			<input type="hidden" th:field="*{idUsuario}" id="id" />
+			<div class="form-group my-3">
+				<label for="nombre"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Nombre completo: </label> <input class="col-7 form-control d-inline-block"
+					type="text" id="nombre" placeholder="Nombre" th:field="*{nombre}"
+					th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" /><small
+					th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+					class="invalid-feedback" id="nombre-error"></small>
+			</div>
+			<div class="form-group my-3 d-none">
+				<label for="email"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Email: </label> <input class="col-7 form-control d-inline-block"
+					type="text" id="email" placeholder="Email" th:field="*{email}"
+					th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''" /><small
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+					class="invalid-feedback" id="email-error"></small>
+			</div>
+			<div class="form-group my-3">
+				<label for="telefono"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Teléfono: </label> <input class="col-7 form-control d-inline-block"
+					type="text" id="telefono" placeholder="Teléfono"
+					th:field="*{telefono}"
+					th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''" /><small
+					th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"
+					class="invalid-feedback" id="telefono-error"></small>
+			</div>
+			<div class="form-group my-3">
+				<label for="nuevaPasswd"
+					class="col-4 col-form-label d-none d-md-inline-flex"> Nueva
+					Contraseña: </label> <input class="col-7 form-control d-inline-block"
+					type="password" id="nuevaPasswd" name="nuevaPasswd"
+					placeholder="******" />
+			</div>
+			<div class="form-group my-3">
+				<label for="nuevaPasswdConf"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Confirmar Nueva Contraseña: </label> <input
+					class="col-7 form-control d-inline-block" type="password"
+					id="nuevaPasswdConf" name="nuevaPasswdConf" placeholder="******" />
+			</div>
+			<div class="form-group my-3">
+				<select th:field="*{centroUsuario}"
+					class="col-7 form-control d-inline-block d-md-inline-flex custom-select">
+					<option value="-1" selected>--Centro--</option>
+					<option th:each="centro : ${centros}"
+						th:value="${centro.getIdCentro()}" th:text="${centro.getCiudad()}">Nombre
+						del centro</option>
+				</select>
+			</div>
+			<div class="form-group my-3">
+				<select th:field="*{idiomaUsuario}"
+					class="col-7 form-control d-inline-block d-md-inline-flex custom-select">
+					<option value="-1" selected>--Idioma--</option>
+					<option th:each="idioma : ${idiomas}"
+						th:value="${idioma.getIdIdiomas()}"
+						th:text="${idioma.getNombreIdiomas()}">Idioma</option>
+				</select>
+			</div>
+			<div>
+				<label for="password"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Intorduzca su contraseña actual: </label> <input
+					class="col-7 form-control d-inline-block" type="password"
+					id="password" th:field="*{password}" placeholder="******"
+					th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''" /><small
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+					class="invalid-feedback" id="password-error"></small>
+			</div>
+			<div class="form-group my-3">
+				<button class="btn btn-outline-success mt-2 mb-5" type="submit">
+					Cambiar datos</button>
+			</div>
+		</form>
+	</div>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="\js\pers.js"></script>
+	<?php ?>
+</body>
+</html>

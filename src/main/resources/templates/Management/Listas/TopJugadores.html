@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Top Players - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center">Top Jugadores del Club</h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark p-3 table-responsive">
+		<h5 class="display-6 my-4 text-center">Mejores Organizadores</h5>
+		<table class="table table-hover container-fluid">
+
+			<thead class="thead-light">
+				<tr>
+					<th>Email</th>
+					<th>Puntuación Media</th>
+				</tr>
+			</thead>
+			<tbody class="bg-light">
+				<tr th:each="organizador : ${organizadores}">
+					<td th:text="${organizador.getKey()}"></td>
+					<td th:text="${#numbers.formatDecimal(organizador.getValue(),0,2,'COMMA')}"></td>
+				</tr>
+			</tbody>
+		</table><h5 class="display-6 my-4 text-center">Mejores Jugadores</h5>
+		<table class="table table-hover container-fluid">
+
+			<thead class="thead-light">
+				<tr>
+					<th>Email</th>
+					<th>Puntuación Media</th>
+				</tr>
+			</thead>
+			<tbody class="bg-light">
+				<tr th:each="jugador : ${jugadores}">
+					<td th:text="${jugador.getKey()}"></td>
+					<td th:text="${#numbers.formatDecimal(jugador.getValue(),0,2,'COMMA')}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- Footer -->
+
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="\js\pers.js"></script>
+</body>
+</html>

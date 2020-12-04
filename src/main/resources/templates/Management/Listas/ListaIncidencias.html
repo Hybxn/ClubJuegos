@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Incidents - Alten Game Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="..\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<div class="container text-center">
+		<!--Nuestros Juegos-->
+		<h3 class="text-center display-4 my-4">INCIDENCIAS</h3>
+		<div
+			class="container border border-dark  bg-light mt-4 rounded-top shadow p-3">
+			<div th:if="${ #lists.isEmpty(ListaIncidencias)}">
+				<span>Parece que nunca se ha reportado una incidencia en tu
+					centro. ¡Enhorabuena!</span>
+			</div>
+			<!-- Tabla donde se muestran todos los juegos y sus correspondientes centros -->
+			<div th:if="${not #lists.isEmpty(ListaIncidencias)}"
+				class="table-responsive justify-content-center rounded-bottom bg-light p-2 mb-4 shadow">
+				<h5>Todas las incidencias</h5>
+
+				<table class="table table-hover container-fluid">
+					<thead class="thead-light">
+						<tr>
+							<th>Código Incidencia</th>
+							<th>Descripcion</th>
+							<th>Código Partida</th>
+							<th>Estado Incidencia</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody class="bg-light">
+						<tr th:each="incidencia : ${ListaIncidencias}">
+							<td th:text="${incidencia.getIdIncidencias()}"></td>
+							<td th:text="${incidencia.getDescrIncidencia()}"></td>
+							<td th:text="${incidencia.getPartidaIncidencia().getId()}"></td>
+							<td
+								th:text="${incidencia.getEstadoIncidencia().getNombreEstadoIncidencia()}"></td>
+							<td>
+								<div class="btn-group">
+									<a href="#"
+										th:if="${incidencia.getEstadoIncidencia().getNombreEstadoIncidencia() == 'Sin revisar'}"
+										th:href="@{/management/incidencias/delete/{id}(id=${incidencia.getIdIncidencias()})}">
+										<button type="button" class="btn btn-outline-warning"
+											data-toggle="modal" data-taget="#delete-modal"
+											th:data-id="${incidencia.getIdIncidencias()}">Revisada</button>
+									</a> <a href="#"
+										th:if="${incidencia.getEstadoIncidencia().getNombreEstadoIncidencia() == 'Revisada'}"
+										th:href="@{/management/incidencias/delete/{id}(id=${incidencia.getIdIncidencias()})}">
+										<button type="button" class="btn btn-outline-danger"
+											data-toggle="modal" data-taget="#delete-modal"
+											th:data-id="${incidencia.getIdIncidencias()}">Reabrir</button>
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+</body>
+</html>

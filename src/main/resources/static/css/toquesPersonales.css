@@ -1,0 +1,57 @@
+.bannerClub {
+  background-image: url("../imgs/banner.jpg");
+  height: 25vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.logoUK{
+    background-image: url("../imgs/united-kingdom.svg");
+    height: fit-content;
+    width: fit-content;
+    background-size: cover;
+    background-position: center;
+}
+
+.logoESP{
+    background-image: url("../imgs/spain.svg");
+    height: fit-content;
+    width: fit-content;
+    background-size: cover;
+    background-position: center;
+}
+
+.logoNav {
+  height: 30px;
+  width: 30px;
+}
+.fondo1{
+    background-color: #0d1b2a;
+}
+.fondo2{
+    background-color: #1b263b;
+}
+.fondo3{
+    background-color: #415a77;
+}
+.fondo4{
+    background-color: #778da9;
+}
+.fondo5{
+    background-color: #e0e1dd;
+}
+
+.borde1{
+    border: 1px solid #415a77;
+}
+
+.icon{
+	width: 100px;
+	height:100px;
+}
+
+.minicon{
+	width: 25px;
+	height:25px;
+}

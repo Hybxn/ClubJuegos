@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lenguages List - Alten Game Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<div class="container text-center">
+		<h3 class="text-center display-4 my-4">Gestionar idiomas Alten</h3>
+		<div th:if="${#lists.isEmpty(idiomas)}">
+			<span class="alert alert-danger" role="alert">Parece que ha
+				ocurrido un error y no se pueden visualizar los idiomas.<br>
+				Por favor contacta con ivan.maciag@alten.es para informar del
+				problema.<br> Disculpa las molestias
+			</span>
+		</div>
+		<div th:if="${not #lists.isEmpty(idiomas)}"
+			class="container border border-dark border-bottom-0 bg-light mt-4 rounded-top shadow p-3">
+			<div
+				class="table-responsive justify-content-center rounded-bottom bg-light p-2 mb-4 border border-dark border-top-0 shadow">
+				<table class="table table-hover container-fluid">
+					<thead class="thead-light">
+						<tr>
+							<th>Código idioma</th>
+							<th>Idioma</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody class="bg-light">
+						<tr th:each="idioma : ${idiomas}">
+							<th th:text="${idioma.getIdIdiomas()}"></th>
+							<td th:text="${idioma.getNombreIdiomas()}"></td>
+							<td>
+								<div class="btn-group">
+									<a href="#"
+										th:href="@{/management/idiomas/edit/{id}(id=${idioma.getIdIdiomas()})}">
+										<button type="button" class="btn btn-outline-info">
+											Editar</button>
+									</a> <a href="#"
+										th:href="@{/management/idiomas/delete/{id}(id=${idioma.getIdIdiomas()})}">
+										<button type="button" class="btn btn-outline-danger"
+											data-toggle="modal" data-taget="#delete-modal"
+											th:data-id="${idioma.getIdIdiomas()}">Eliminar</button>
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn-group text-center my-3">
+					<a href="/management/idiomas/new">
+						<button type="button" class="btn btn-outline-success">Crear
+							idioma</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/pers.js"></script>
+</body>
+</html>

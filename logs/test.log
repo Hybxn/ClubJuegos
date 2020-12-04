@@ -1,0 +1,89 @@
+2020-11-30 17:07:02.184  INFO 4176 --- [RMI TCP Connection(15)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-11-30 17:07:02.261  INFO 4176 --- [RMI TCP Connection(15)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-30 17:07:02.263  INFO 4176 --- [RMI TCP Connection(15)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-30 17:07:02.263  INFO 4176 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-30 17:07:02.268  INFO 4176 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-30 17:07:06.728  INFO 3564 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m      [2m (v2.3.4.RELEASE)[0;39m
+
+
+2020-11-30 17:07:06.782  INFO 3564 --- [main] com.clubjuegos.ClubJuegos1Application    : Starting ClubJuegos1Application on HybanPC with PID 3564 (D:\FCT\ClubDeJuegosAlten\ClubJuegos\target\classes started by FCTS in D:\FCT\ClubDeJuegosAlten\ClubJuegos)
+2020-11-30 17:07:06.782  INFO 3564 --- [main] com.clubjuegos.ClubJuegos1Application    : No active profile set, falling back to default profiles: default
+2020-11-30 17:07:07.302  INFO 3564 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-30 17:07:07.386  INFO 3564 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78ms. Found 15 JPA repository interfaces.
+2020-11-30 17:07:07.765  INFO 3564 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (http)
+2020-11-30 17:07:07.772  INFO 3564 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-30 17:07:07.772  INFO 3564 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.38]
+2020-11-30 17:07:07.866  INFO 3564 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-30 17:07:07.866  INFO 3564 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1055 ms
+2020-11-30 17:07:07.963  INFO 3564 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-30 17:07:07.993  INFO 3564 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-30 17:07:08.029  INFO 3564 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.21.Final
+2020-11-30 17:07:08.072  WARN 3564 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-30 17:07:08.116  INFO 3564 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-30 17:07:08.192  INFO 3564 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-30 17:07:08.216  INFO 3564 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56826a75, org.springframework.security.web.context.SecurityContextPersistenceFilter@7dee835, org.springframework.security.web.header.HeaderWriterFilter@8e25d3f, org.springframework.security.web.csrf.CsrfFilter@661d6bb6, org.springframework.security.web.authentication.logout.LogoutFilter@39b626e5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@d3e3085, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e02721d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e1eb85f, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@285005b8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49cd946c, org.springframework.security.web.session.SessionManagementFilter@79b18230, org.springframework.security.web.access.ExceptionTranslationFilter@3fcbc766, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5348d83c]
+2020-11-30 17:07:08.291  INFO 3564 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-30 17:07:08.300  INFO 3564 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-11-30 17:07:08.492  INFO 3564 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (http) with context path ''
+2020-11-30 17:07:08.493  INFO 3564 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-11-30 17:07:10.541  INFO 3564 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-30 17:07:10.547  INFO 3564 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-30 17:07:10.914  INFO 3564 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-11-30 17:07:10.921  INFO 3564 --- [main] com.clubjuegos.ClubJuegos1Application    : Started ClubJuegos1Application in 4.382 seconds (JVM running for 4.97)
+2020-11-30 17:07:16.928  INFO 3564 --- [http-nio-9000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-30 17:07:16.928  INFO 3564 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-30 17:07:16.932  INFO 3564 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-11-30 17:18:24.015  INFO 3564 --- [RMI TCP Connection(21)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-11-30 17:18:24.082  INFO 3564 --- [RMI TCP Connection(21)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-30 17:18:24.085  INFO 3564 --- [RMI TCP Connection(21)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-30 17:18:24.085  INFO 3564 --- [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-30 17:18:24.089  INFO 3564 --- [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-30 17:18:28.615  INFO 10684 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m      [2m (v2.3.4.RELEASE)[0;39m
+
+
+2020-11-30 17:18:28.662  INFO 10684 --- [main] com.clubjuegos.ClubJuegos1Application    : Starting ClubJuegos1Application on HybanPC with PID 10684 (D:\FCT\ClubDeJuegosAlten\ClubJuegos\target\classes started by FCTS in D:\FCT\ClubDeJuegosAlten\ClubJuegos)
+2020-11-30 17:18:28.663  INFO 10684 --- [main] com.clubjuegos.ClubJuegos1Application    : No active profile set, falling back to default profiles: default
+2020-11-30 17:18:29.170  INFO 10684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-30 17:18:29.255  INFO 10684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79ms. Found 15 JPA repository interfaces.
+2020-11-30 17:18:29.634  INFO 10684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (http)
+2020-11-30 17:18:29.640  INFO 10684 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-30 17:18:29.641  INFO 10684 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.38]
+2020-11-30 17:18:29.735  INFO 10684 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-30 17:18:29.735  INFO 10684 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1044 ms
+2020-11-30 17:18:29.831  INFO 10684 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-30 17:18:29.863  INFO 10684 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-30 17:18:29.897  INFO 10684 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.21.Final
+2020-11-30 17:18:29.938  WARN 10684 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-30 17:18:29.989  INFO 10684 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-30 17:18:30.061  INFO 10684 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-30 17:18:30.084  INFO 10684 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@364b1061, org.springframework.security.web.context.SecurityContextPersistenceFilter@1283ca23, org.springframework.security.web.header.HeaderWriterFilter@6dca31eb, org.springframework.security.web.csrf.CsrfFilter@715f45c6, org.springframework.security.web.authentication.logout.LogoutFilter@5e9bbd9d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1e1237ab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@aa61e4e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d2f3dcb, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@1578b8ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@50fdf44f, org.springframework.security.web.session.SessionManagementFilter@4b56b031, org.springframework.security.web.access.ExceptionTranslationFilter@2d258eff, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6c17c0f8]
+2020-11-30 17:18:30.173  INFO 10684 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-30 17:18:30.182  INFO 10684 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-11-30 17:18:30.363  INFO 10684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (http) with context path ''
+2020-11-30 17:18:30.365  INFO 10684 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-11-30 17:18:32.324  INFO 10684 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-30 17:18:32.329  INFO 10684 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-30 17:18:32.695  INFO 10684 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-11-30 17:18:32.702  INFO 10684 --- [main] com.clubjuegos.ClubJuegos1Application    : Started ClubJuegos1Application in 4.292 seconds (JVM running for 4.882)
+2020-11-30 17:18:42.462  INFO 10684 --- [http-nio-9000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-30 17:18:42.463  INFO 10684 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-30 17:18:42.466  INFO 10684 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2020-11-30 18:02:44.434  INFO 10684 --- [RMI TCP Connection(54)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-11-30 18:02:44.509  INFO 10684 --- [RMI TCP Connection(54)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-30 18:02:44.511  INFO 10684 --- [RMI TCP Connection(54)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-30 18:02:44.511  INFO 10684 --- [RMI TCP Connection(54)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-30 18:02:44.515  INFO 10684 --- [RMI TCP Connection(54)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

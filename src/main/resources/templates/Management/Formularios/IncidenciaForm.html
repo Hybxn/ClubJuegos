@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Incidents Form - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center">
+		<span
+			th:text="${incidencia.getIdIncidencias()} ? 'Editar incidencia' : 'Nueva incidencia'"></span>
+	</h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark">
+		<form method="post" action="#" class="justify-content-center"
+			th:action="@{/jugador/partidas/incidencias/new/submit}"
+			th:object="${incidencia}">
+			<input type="hidden" th:field="*{idIncidencias}" id="id" />
+			<div class="form-group my-3">
+				<textarea class="col-7 form-control d-inline-block d-md-inline-flex"
+					id="descrIncidencia" rows="4" th:field="*{descrIncidencia}"
+					placeholder="Describe la incidencia."></textarea>
+			</div>
+			<input type="hidden" th:field="*{partidaIncidencia}" id="partidaIncidencia" readonly/>
+			<input type="hidden" th:field="*{estadoIncidencia}" id="estadoIncidencia" readonly/>
+<!-- 			<div class="form-group my-3"> -->
+<!-- 				<select th:field="*{partidaIncidencia}" -->
+<!-- 					class="col-7 form-control d-inline-block d-md-inline-flex custom-select"> -->
+<!-- 					<option value="-1" selected>--Partida--</option> -->
+<!-- 					<option th:each="partida : ${partidas}" -->
+<!-- 						th:value="${partida.getId()}" th:text="${partida.getId()}"></option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+<!-- 			<div class="form-group my-3"> -->
+<!-- 				<select th:field="*{estadoIncidencia}" -->
+<!-- 					class="col-7 form-control d-inline-block d-md-inline-flex custom-select"> -->
+<!-- 					<option value="-1" selected>--Estado--</option> -->
+<!-- 					<option th:each="estado : ${estados}" -->
+<!-- 						th:value="${estado.getIdEstadoIncidencia()}" -->
+<!-- 						th:text="${estado.getNombreEstadoIncidencia()}"></option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+			<div class="form-group my-3">
+				<button class="btn btn-outline-success mt-2 mb-5" type="submit">
+					Crear incidencia</button>
+			</div>
+		</form>
+	</div>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="\js\pers.js"></script>
+	<?php ?>
+</body>
+</html>

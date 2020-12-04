@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="..\css\toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center"
+		data-th-text="#{home.box.loginbutton}"></h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark">
+		<div th:if="${param.error}" class="alert alert-danger my-3"
+			role="alert">Email y/o contraseña no válidos.</div>
+		<div th:if="${param.logout}" class="alert alert-success my-3"
+			role="alert">Sesión cerrada con éxito.</div>
+		<form class="justify-content-center" th:action="@{/login}"
+			method="post">
+			<div class="form-group my-3">
+				<label for="username"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Email: </label> <input class="col-7 form-control d-inline-block"
+					type="text" name="username" id="username" placeholder="Email"
+					required autofocus />
+			</div>
+			<div class="form-group my-3">
+				<label for="password"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Contraseña: </label> <input
+					class="col-7 form-control d-inline-block d-md-inline-flex"
+					type="password" name="password" id="password"
+					placeholder="Contraseña" required />
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" name="remember-me"
+					id="remember-me" /> <label for="remember-me"
+					class="form-check-label">Mantener la sesión iniciada</label>
+			</div>
+			<div class="form-group my-3">
+				<button class="btn btn-outline-success mt-2 mb-5" type="submit" data-th-text="#{home.box.loginbutton}">
+					Iniciar Sesión</button>
+			</div>
+		</form>
+	</div>
+	<p class="container text-center my-5">
+		¿Todavía no tienes una cuenta? <a href="/registro"
+			data-th-text="#{home.box.regbutton}"> </a>
+	</p>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="..\js\pers.js"></script>
+	<?php ?>
+</body>
+</html>

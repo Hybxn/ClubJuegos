@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome - Alten Game Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+
+	<!-- Contenido General-->
+
+	<!--Introduccion al club-->
+	<div class="container mt-4 p-3">
+		<h3 class="text-center display-4" data-th-text="#{home.welcome}">
+		</h3>
+	</div>
+	<!-- Cartas bootstrap para mostrar los centros y juegos-->
+	<div class="container mt-4">
+		<div class="card-deck">
+			<div class="card img-fluid border-dark bg-light shadow">
+				<img src="/imgs/oficina.jpg" alt="" class="card-img-top" />
+				<div class="card-body">
+					<h5 class="card-title" data-th-text="#{home.centers.title}"></h5>
+					<p class="card-text" data-th-text="#{home.centers.body}"></p>
+					<a href="centros" class="btn btn-outline-dark"
+						data-th-text="#{home.centers.button}"></a>
+				</div>
+			</div>
+			<div class="card img-fluid border-dark bg-light shadow">
+				<img src="/imgs/cartas.jpg" alt="" class="card-img-top" />
+				<div class="card-body">
+					<h5 class="card-title" data-th-text="#{home.games.title}"></h5>
+					<p class="card-text" data-th-text="#{home.games.body}"></p>
+					<a href="juegos" class="btn btn-outline-dark"
+						data-th-text="#{home.games.button}"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Inicio de sesion o registro-->
+	<div th:if="${#authentication.name == 'anonymousUser'}"
+		class="container mt-4 mb-4 border border-dark bg-light shadow rounded-lg">
+		<h3 class="text-center" data-th-text="#{home.box.title}"></h3>
+		<p class="text-center" data-th-text="#{home.box.body}"></p>
+		<div class="text-center">
+			<a href="/registro">
+				<button class="btn btn-outline-success mb-3"
+					data-th-text="#{home.box.regbutton}"></button>
+			</a> <a href="/login">
+				<button class="btn btn-outline-primary mb-3"
+					data-th-text="#{home.box.loginbutton}"></button>
+			</a>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/pers.js"></script>
+</body>
+</html>

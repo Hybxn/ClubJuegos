@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Error Page - Alten Game Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+
+	<!-- Contenido General-->
+	<div class="container mt-4 p-3">
+		<h3 class="text-center display-4">
+			Oh no! Error <span th:text="${codigo}"></span><img class="icon" alt=""
+				src="/imgs/preocupado.svg">
+		</h3>
+	</div>
+	<div
+		class="container mt-4 mb-4 border border-dark bg-light shadow rounded-lg text-center p-3">
+		<h3 class="text-center">¿Qué significa esto?</h3>
+		<div th:switch="${codigo}">
+			<p th:case="403">
+				Significa que no deberias estar aquí, porque has intentado acceder a
+				una parte de la aplicación a la que no tienes permiso... <br>
+				Esta feo intentar esas cosas <img class="minicon" alt="" src="/imgs/enojado.svg">
+			</p>
+			<p th:case="404">
+				Significa que la url a la que ha intentado acceder no existe <img class="minicon" alt="" src="/imgs/triston.svg"><br>
+				Comprueba que has escrito bien la URL, de lo contrario le agradeceria que escribiera un email a ivan.maciag@alten.es
+			</p>
+			<p th:case="500">
+				Significa que el servidor se encuentra así -> <img class="minicon" alt="" src="/imgs/muerto.svg"><br>
+				Disculpa las molestias
+			</p>
+		</div>
+		<a class="btn btn-outline-info" href="/">Volver al inicio</a>
+<!-- 		<div class="text-center my-4"> -->
+<!-- 			<p class="font-weight-bold">Información adicional del error</p> -->
+<!-- 			<p th:text="${errorInfo}"></p> -->
+<!-- 		</div> -->
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/pers.js"></script>
+</body>
+</html>

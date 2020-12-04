@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" class="fondo1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Game - Alten Games Club</title>
+<!-- Link a las hojas de estilo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/toquesPersonales.css" />
+</head>
+<body class="fondo5">
+	<!-- Banner de la página web -->
+
+	<a th:replace="/Plantilla.html :: banner" href="/"></a>
+	<!-- Barra de navegación -->
+	<a th:replace="/Plantilla.html :: navbar" href="/"></a>
+	<!-- Contenido General-->
+	<h3 class="display-4 my-4 text-center">
+		<span
+			data-th-text="${juego.getIdJuegos()} ? #{manag.games.edit} : #{manag.games.new}"></span>
+	</h3>
+	<div
+		class="container text-center align-self-center fondo5 w-75 rounded-lg shadow bg-light border border-dark">
+		<form method="post" action="#" class="justify-content-center"
+			th:action="@{/management/juegos/new/submit}" th:object="${juego}">
+			<input type="hidden" th:field="*{idJuegos}" id="id" />
+			<div class="form-group my-3">
+				<label for="nombreJuego"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Nombre Juego: </label> <input class="col-7 form-control d-inline-block"
+					type="text" id="nombreJuego" placeholder="Nombre"
+					th:field="*{nombreJuego}" required />
+			</div>
+			<div class="form-group my-3">
+				<label for="descripcionJuego"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Descripción: </label>
+				<textarea class="col-7 form-control d-inline-block d-md-inline-flex"
+					id="descripcionJuego" rows="4" th:field="*{descripcionJuego}"
+					placeholder="Descripción..."></textarea>
+			</div>
+			<div class="form-group my-3">
+				<label for="minJugadores"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Jugadores Mínimos: </label> <input
+					class="col-7 form-control d-inline-block" type="number"
+					id="minJugadores" placeholder="Mínimo Jugadores"
+					th:field="*{minJugadores}" required />
+			</div>
+			<div class="form-group my-3">
+				<label for="maxJugadores"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Jugadores Máximos: </label> <input
+					class="col-7 form-control d-inline-block" type="number"
+					id="maxJugadores" placeholder="Máximo Jugadores"
+					th:field="*{maxJugadores}" required />
+			</div>
+			<div class="form-group my-3">
+				<label for="stock"
+					class="col-4 col-form-label d-none d-md-inline-flex">
+					Stock: </label> <input class="col-7 form-control d-inline-block"
+					type="number" id="stock" placeholder="Stock" th:field="*{stock}"
+					required />
+			</div>
+			<div class="form-group my-3">
+				<select th:field="*{centroJuego}"
+					class="col-7 form-control d-inline-block d-md-inline-flex custom-select">
+					<option value="-1" selected>--Centro--</option>
+					<option th:each="centro : ${centros}"
+						th:value="${centro.getIdCentro()}" th:text="${centro.getCiudad()}">Nombre
+						del centro</option>
+				</select>
+			</div>
+			<div class="form-check my-3 display-inline-block"
+				th:each="idioma : ${idiomas}">
+				<input class="form-check-input" type="radio"
+					th:field="*{idiomaJuego}" th:value="${idioma.getIdIdiomas()}" /> <label
+					class="form-check-label" th:for="${#ids.prev('idiomaJuego')}"
+					th:text="${idioma.getNombreIdiomas()}"> Idioma Juego: </label>
+			</div>
+			<div class="form-group my-3">
+				<button class="btn btn-outline-success mt-2 mb-5" type="submit">
+					Añadir juego</button>
+			</div>
+		</form>
+	</div>
+	<!-- Footer -->
+	<div th:replace="/Plantilla.html :: footer"></div>
+	<!-- Scripts JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/pers.js"></script>
+	<?php ?>
+</body>
+</html>
